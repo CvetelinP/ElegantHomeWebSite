@@ -6,6 +6,7 @@
 
     public class CategoryViewModel : IMapFrom<Data.Models.Category>
     {
+        public int Id { get; set; }
 
         [Required]
         [MinLength(3)]

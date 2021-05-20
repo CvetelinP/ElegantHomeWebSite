@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ElegantHome.Services.Mapping;
-
-namespace ElegantHome.Services.Data
+﻿namespace ElegantHome.Services.Data
 {
-    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using ElegantHome.Data.Common.Repositories;
     using ElegantHome.Data.Models;
+    using ElegantHome.Services.Mapping;
     using ElegantHome.Web.ViewModels.Category;
 
     public class CategoriesService : ICategoriesService
@@ -38,6 +36,8 @@ namespace ElegantHome.Services.Data
 
             return category;
         }
+
+
 
         public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs()
         {
