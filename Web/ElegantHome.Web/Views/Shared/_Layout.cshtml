@@ -64,11 +64,23 @@
                                 <!-- Account Menu -->
                                 <div class="account-menu col-md-4 col-12">
                                     <ul>
-
-                                        <li><a asp-controller="WishLists" asp-action="All">Wishlist</a></li>
+                                        @if (SignInManager.IsSignedIn(User))
+                                        {
+                                            <li><a asp-controller="WishLists" asp-action="All">Wishlist</a></li>
+                                            <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a></li>
+                                            <li>
+                                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
+                                                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                                </form>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                             <partial name="_LoginPartial" />
+                                        }
+                                        
                                         <li>
-                                            <a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a>
-
+   
                                             <!-- Mini Cart -->
                                             <div class="mini-cart-brief dropdown-menu text-left">
                                                 <!-- Cart Products -->
@@ -136,10 +148,9 @@
                                     <a asp-controller="Products" asp-action="All">shop</a>
                                     <ul class="sub-menu">
                                         <li><a asp-controller="Products" asp-action="All">shop page</a></li>
-                                        <li><a asp-controller="Products" asp-action="Details">product details</a></li>
                                     </ul>
                                 </li>
-                                <li><a a asp-controller="Home" asp-action="About">about</a></li>
+                                <li><a a asp-controller="Categories" asp-action="All">categories</a></li>
                                 @if (User.IsInRole("Administrator"))
                                 {
                     <li>
@@ -161,23 +172,6 @@
                                     </ul>
                                 </li>
                                 <li><a href="contact.html">contact</a></li>
-
-                                @if (!this.SignInManager.IsSignedIn(this.User))
-                                {
-                    <li>
-                        <a href="#">LoginForm</a>
-                        <ul class="sub-menu">
-                            <li> <partial name="_LoginPartial" /></li>
-                        </ul>
-                    </li> }
-                                else
-                                {
-                    <li>
-                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
-                            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                        </form>
-                    </li>}
-
                             </ul>
                         </nav>
 

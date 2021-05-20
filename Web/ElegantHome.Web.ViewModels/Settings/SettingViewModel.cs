@@ -1,9 +1,8 @@
 ﻿namespace ElegantHome.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using ElegantHome.Data.Models;
     using ElegantHome.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {
