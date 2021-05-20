@@ -11,7 +11,6 @@
 
         IEnumerable<T> GetAll<T>();
 
-
         IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs();
     }
 }
