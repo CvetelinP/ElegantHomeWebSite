@@ -20,3 +20,10 @@ Stripe API
 Google reCAPTCHA v3 API
 Cloudinary API
 Sendgrid API
+
+
+
+
+
+Website : 
+https://eleganthome.azurewebsites.net/
