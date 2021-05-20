@@ -48,8 +48,8 @@
 
                                 <!-- Title & Category -->
                                 <div class="title-category float-left">
-                                    <h5 class="title"><a href="product-details.html">@item.Name</a></h5>
-                                    <a href="shop.html" class="category">@item.CategoryName</a>
+                                   <a  asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id"><h5>@item.Name</h5></a>
+                                    <a href="shop.html" class="category" style="color: red"><b>@item.CategoryName</b></a>
                                 </div>
                                 <!-- Price -->
                                 <div class="price float-right">
