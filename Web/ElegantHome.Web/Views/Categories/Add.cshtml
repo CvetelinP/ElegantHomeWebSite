@@ -1,0 +1,27 @@
+﻿@model ElegantHome.Web.ViewModels.Category.CategoryViewModel
+
+
+<div id="main-wrapper" class="section">
+    <h3>Създай категория</h3>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <form method="post" class="comment-form row">
+            <div class="col-md-6 col-sm-12 mb-30">
+                <input placeholder="Name" asp-for="Name" type="text">
+            </div>
+            <div class="col-12"><input value="Submit" type="submit"></div>
+        </form>
+        <hr/>
+        <a asp-controller="Categories" asp-action="All">
+            <div class="comment-form row"><input value="Всички категории" type="submit"></div>
+        </a>
+
+</div>
+
+
+
+
+
+
+
+
+

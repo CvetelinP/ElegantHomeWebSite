@@ -1,0 +1,137 @@
+/*----------------------------------------*/
+/*  4.  Banner Section
+/*----------------------------------------*/
+.banner-section {}
+.single-banner {
+    position: relative;
+    & img {
+        width: 100%;
+    }
+    & .banner-content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        &.left {
+            left: 45px;
+            @media #{$large-mobile}{
+                left: 30px
+            }
+            @media #{$small-mobile}{
+                left: 30px
+            }
+        }
+        &.right {
+            right: 35px;
+            @media #{$large-mobile}{
+                right: 30px;
+            }
+            @media #{$small-mobile}{
+                right: 30px;
+            }
+        }
+        & h1 {
+            font-size: 40px;
+            line-height: 44px;
+            font-weight: 700;
+            margin-bottom: 23px;
+            @media #{$large-mobile}{
+                font-size: 30px;
+                line-height: 34px;
+            }
+            @media #{$small-mobile}{
+                font-size: 24px;
+                line-height: 24px;
+                margin-bottom: 15px;
+            }
+            &.white {
+                color: $white;
+            }
+            &.black {
+                color: $heading-color;
+            }
+            & Span {
+                font-size: 30px;
+                display: flex;
+                @media #{$large-mobile}{
+                    font-size: 24px;
+                }
+                @media #{$small-mobile}{
+                    font-size: 18px;
+                }
+            }
+        }
+        & h2 {
+            font-size: 36px;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            @media #{$large-mobile}{
+                font-size: 30px;
+                line-height: 36px;
+            }
+            @media #{$small-mobile}{
+                font-size: 24px;
+                line-height: 24px;
+                margin-bottom: 10px;
+            }
+            &.white {
+                color: $white;
+            }
+            &.black {
+                color: $heading-color;
+            }
+            & span.small {
+                display: flex;
+                font-size: 28px;
+                font-weight: inherit;
+                @media #{$large-mobile}{
+                    font-size: 24px;
+                }
+                @media #{$small-mobile}{
+                    font-size: 18px;
+                }
+            }
+            & span.red {
+                color: $theme-color-one;
+            }
+            & span.green {
+                color: $theme-color-two;
+            }
+        }
+        
+        & a.button {
+            font-size: 13px;
+            padding: 0 25px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: $white;
+            line-height: 32px;
+            border: 2px solid $white;
+            border-radius: 5px;
+            height: 36px;
+            @media #{$large-mobile}{
+                font-size: 11px;
+                height: 32px;
+                line-height: 30px;
+                padding: 0 20px;
+            }
+            &:hover {
+                background-color: $white;
+                color: $theme-color-one;
+            }
+        }
+        & a.link {
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: $theme-color-one;
+            line-height: 11px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid $theme-color-one;
+            &:hover {
+                color: $heading-color;
+                border-color: $heading-color;
+            }
+        }
+    }
+}

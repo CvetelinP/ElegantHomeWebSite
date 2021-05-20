@@ -1,0 +1,454 @@
+/*-- Section Title --*/
+.section-title {
+    & h1 {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 28px;
+        color: $heading-color;
+        text-transform: capitalize;
+        margin: 0;
+        padding: 20px 0;
+        background-image: url("img/section-title-bg.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        @media #{$large-mobile}{
+            font-size: 30px;
+        }
+        @media #{$small-mobile}{
+            font-size: 24px;
+        }
+    }
+    & p {
+        font-size: 17px;
+        line-height: 27px;
+        max-width: 710px;
+        margin: 20px auto auto;
+    }
+}
+
+/*-- Page Banner Section --*/
+.page-banner-section {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 230px 0;
+        @media #{$laptop-device}{
+            padding: 150px 0;
+        }
+        @media #{$desktop-device}{
+            padding: 150px 0;
+        }
+        @media #{$tablet-device}{
+            padding: 120px 0;
+        }
+        @media #{$large-mobile}{
+            padding: 100px 0;
+        }
+        @media #{$small-mobile}{
+            padding: 60px 0;
+        }
+    & .page-title {
+        & h1 {
+            font-size: 40px;
+            line-height: 1;
+            font-weight: 700;
+            color: $white;
+            text-transform: uppercase;
+            margin: 0;
+            @media #{$large-mobile}{
+                font-size: 24px;
+            }
+            @media #{$small-mobile}{
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+/*-- Pagination --*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    & ul {
+        display: inline-flex;
+        & li {
+            margin: 0 4px;
+            & a {
+                display: block;
+                font-size: 14px;
+                caption-side: $body-color;
+                width: 26px;
+                text-align: center;
+                line-height: 26px;
+                height: 26px;
+                border-radius: 3px;
+                &:hover {
+                    color: inherit;
+                }
+            }
+            &.active {
+                & a {
+                    background-color: #dae0e8;
+                    & i {}
+                }
+            }
+            &.arrows {
+                & a {
+                    background-color: $heading-color;
+                    color: $white;
+                    &:hover {
+                        background-color: $theme-color-two;
+                    }
+                    & i {
+                        display: block;
+                        font-size: 16px;
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*-- Blockquote --*/
+.blockquote {
+    background-color: $white;
+    padding: 40px;
+    & p {
+        font-size: 14px;
+        line-height: 26px;
+    }
+}
+
+/*-- Sidebar Wrapper --*/
+.sidebar-wrapper {
+    padding: 40px;
+    background-color: $white;
+}
+
+/*-- Single Sidebar --*/
+.single-sidebar {
+    
+    // Sidebar Title
+    & .sidebar-title {
+        display: block;
+        font-size: 18px;
+        line-height: 14px;
+        text-transform: capitalize;
+        margin-bottom: 20px;
+    }
+    
+    & > p {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    
+    // Search Form
+    & .sidebar-search-form {
+        position: relative;
+        & input {
+            width: 100%;
+            border: none;
+            background-color: $bg-gray;
+            font-size: 12px;
+            color: $body-color;
+            letter-spacing: 0.2px;
+            height: 40px;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        & button {
+            position: absolute;
+            width: 42px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #dbe0e3;
+            color: $body-color;
+            text-align: center;
+            right: 0;
+            top: 0;
+            border: none;
+            &:hover {
+                background-color: $theme-color-two;
+                color: $white;
+            }
+            & i {
+                display: block;
+                font-size: 18px;
+                line-height: 40px;
+            }
+        }
+    }
+    
+    // Sidebar Post
+    .sidebar-post {
+        margin-bottom: 20px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        & .image {
+            display: block;
+            float: left;
+            width: 80px;
+            margin-right: 15px;
+            @media #{$small-mobile}{
+                float: none;
+                margin-bottom: 15px;
+            }
+            @media #{$desktop-device}{
+                float: none;
+                margin-bottom: 15px;
+            }
+            & img {
+                width: 100%;
+            }
+        }
+        & .content {
+            & .date {
+                display: block;
+                font-size: 11px;
+                color: #acacac;
+                line-height: 14px;
+            }
+            & .title {
+                display: block;
+                font-size: 16px;
+                color: $heading-color;
+                &:hover {
+                    color: $theme-color-two;
+                }
+            }
+            & p {
+                font-size: 13px;
+                line-height: 20px;
+            }
+        }
+    }
+    
+    // Tags
+    & .tag-cloud {
+        & a {
+            border: 1px solid #e3e7ec;
+            color: $body-color;
+            height: 32px;
+            border-radius: 5px;
+            padding: 3px 20px;
+            font-size: 12px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+            &:hover {
+                border-color: $theme-color-two;
+                color: $theme-color-two;
+            }
+        }
+    }
+    
+    // Newsletter Form
+    .sidebar-subscribe-form {
+        & input {
+            width: 100%;
+            border: none;
+            background-color: #f4f4f4;
+            font-size: 12px;
+            color: $body-color;
+            letter-spacing: 0.2px;
+            height: 40px;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        & button.button {
+            border: none;
+            background-color: $theme-color-two;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $white;
+            letter-spacing: 0.4px;
+            height: 40px;
+            padding: 8px 38px;
+            border-radius: 5px;
+            margin-top: 10px;
+            &:hover {
+                background-color: darken($theme-color-two, 5);
+            }
+        }
+    }
+    
+}
+
+/*-- Comment Wrapper --*/
+.comment-wrapper {
+    margin-top: 40px;
+    border-top: 1px solid #d6dee7;
+    padding-top: 60px;
+    & .title {
+        font-size: 22px;
+        line-height: 1;
+        margin-bottom: 40px;
+    }
+}
+
+/*-- Comment List --*/
+.comment-list {
+    margin-bottom: 60px;
+    & li {
+        & .child-comment {
+            padding-left: 100px;
+            @media #{$small-mobile}{
+                padding-left: 0;
+            }
+            & li {}
+        }
+    }
+}
+
+/*-- Single Comment --*/
+.single-comment {
+    margin-bottom: 60px;
+    & .image {
+        border-radius: 5px;
+        margin-right: 20px;
+        overflow: hidden;
+        width: 95px;
+        @media #{$small-mobile}{
+            float: none !important;
+            margin-bottom: 15px;
+        }
+        & img {
+            width: 100%;
+        }
+    }
+    & .content {
+        & .head {
+            float: left;
+            & h5 {
+                font-size: 14px;
+                margin-bottom: 6px;
+                text-transform: uppercase;
+                font-weight: 400;
+            }
+            & span {
+                display: block;
+                font-size: 12px;
+                line-height: 16px;
+            }
+        }
+        & .reply {
+            color: $theme-color-two;
+            text-transform: uppercase;
+            float: right;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+        & p {
+            float: left;
+            font-size: 14px;
+            margin-top: 7px;
+            width: 100%;
+        }
+    }
+}
+
+/*-- Comment Form --*/
+.comment-form {
+    & input {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #d6dee7;
+        background-color: transparent;
+        height: 40px;
+        padding: 7px 20px;
+        color: $body-color;
+        font-size: 13px;
+        &[type="submit"] {
+            width: auto;
+            color: $white;
+            background-color: $theme-color-two;
+            padding: 9px 40px;
+            border: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.4px;
+            &:hover {
+                background-color: darken($theme-color-two, 5);
+            }
+        }
+    }
+    & textarea {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #d6dee7;
+        background-color: transparent;
+        height: 80px;
+        padding: 7px 20px;
+        color: $body-color;
+        font-size: 13px;
+    }
+}
+
+/*Under Construction*/
+.under-construction-section {
+	min-height: 100vh;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+	&::before {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		content: "";
+		background-color: $black;
+		z-index: -1;
+		opacity: 0.5;
+	}
+}
+
+.under-construction-content {
+	& .title {
+		font-size: 60px;
+		font-weight: 700;
+		color: $white;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+	}
+	& .desc {
+		font-size: 22px;
+		line-height: 1.35;
+		color: $white;
+		max-width: 650px;
+		&:not(:last-child) {
+			margin-bottom: 40px;
+		}
+	}
+	// Responsive CSS
+	@media #{$large-mobile} {
+		& .title {
+			font-size: 44px;
+		}
+		& .desc {
+			font-size: 18px;
+		}
+	}
+	@media #{$small-mobile} {
+		& .title {
+			font-size: 30px;
+		}
+		& .desc {
+			font-size: 14px;
+			line-height: 1.5;
+			&:not(:last-child) {
+				margin-bottom: 30px;
+			}
+		}
+	}
+}

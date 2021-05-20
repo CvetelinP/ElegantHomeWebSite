@@ -1,0 +1,16 @@
+﻿@using ElegantHome.Web.ViewModels.Category
+@model ElegantHome.Web.ViewModels.Category.CategoryInListViewModel
+<div id="main-wrapper" class="section">
+    
+    <ul>
+
+        @foreach (var item in Model.Categories)
+        {
+            <li class="text-center"><h3>@item.Name</h3></li>
+        }
+
+        <a asp-controller="Categories" asp-action="Add">
+            <div class="comment-form row"><input value="Назад" type="submit" style="color: black"></div>
+        </a>
+    </ul>
+</div>
