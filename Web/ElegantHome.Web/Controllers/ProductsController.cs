@@ -1,15 +1,14 @@
-﻿using System.Security.Claims;
-using ElegantHome.Data.Models;
-using Microsoft.AspNetCore.Identity;
-
-namespace ElegantHome.Web.Controllers
+﻿namespace ElegantHome.Web.Controllers
 {
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using CloudinaryDotNet;
+    using ElegantHome.Data.Models;
     using ElegantHome.Services.Data;
     using ElegantHome.Web.ClounaryHelper;
     using ElegantHome.Web.ViewModels.Product;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class ProductsController : Controller
@@ -26,7 +25,7 @@ namespace ElegantHome.Web.Controllers
             this._categoriesService = categoriesService;
             this.cloudinary = cloudinary;
             this._userManager = userManager;
-            _wishlistService = wishlistService;
+            this._wishlistService = wishlistService;
         }
 
         public IActionResult Add()
@@ -41,7 +40,6 @@ namespace ElegantHome.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(CreateProductViewModelImages input)
         {
-
             if (!this.ModelState.IsValid)
             {
                 input.CategoriesItems = this._categoriesService.GetAllAsKeyValuePairs();
@@ -77,7 +75,6 @@ namespace ElegantHome.Web.Controllers
 
         public async Task<IActionResult> Details(int productId)
         {
-
             var user = await this._userManager.GetUserAsync(this.User);
             var product = this._productService.ProductProfileInfo(productId);
 
@@ -94,6 +91,16 @@ namespace ElegantHome.Web.Controllers
                 Quantity = product.Quantity,
                 UserId = product.UserId,
                 IsAdInLoggedUserWishlist = this._wishlistService.IsAdInWishlistAsync(this.User.FindFirstValue(ClaimTypes.NameIdentifier), product.Id),
+            };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult ByName(int categoryId)
+        {
+            var viewModel = new ProductListViewModel()
+            {
+                Products = this._productService.GetByCategoryId<ProductInListViewModel>(categoryId),
             };
 
             return this.View(viewModel);

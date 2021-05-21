@@ -92,5 +92,13 @@ namespace ElegantHome.Services.Data
                 CategoryName = x.Category.Name,
             }).FirstOrDefault();
         }
+
+        public IEnumerable<T> GetByCategoryId<T>(int categoryId)
+        {
+            var query = this.productRepository.All()
+                .Where(x => x.CategoryId == categoryId).To<T>().ToList();
+
+            return query;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace ElegantHome.Web.Controllers
+﻿using ElegantHome.Web.ViewModels.Product;
+
+namespace ElegantHome.Web.Controllers
 {
     using System.Threading.Tasks;
 
@@ -9,10 +11,12 @@
     public class CategoriesController : Controller
     {
         private readonly ICategoriesService categoriesService;
+        private readonly IProductsService _productsService;
 
-        public CategoriesController(ICategoriesService categoriesService)
+        public CategoriesController(ICategoriesService categoriesService,IProductsService productsService)
         {
             this.categoriesService = categoriesService;
+            _productsService = productsService;
         }
 
         public IActionResult Add()

@@ -38,7 +38,6 @@
         }
 
 
-
         public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs()
         {
             return this.categoryRepository.AllAsNoTracking()
