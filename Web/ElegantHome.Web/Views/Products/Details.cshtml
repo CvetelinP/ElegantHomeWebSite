@@ -30,7 +30,7 @@
 
                         @foreach (var image in Model.Images)
                         {
-                            <div class="single-thumb"><img src="@image.ImageUrl" alt="" width="155" height="155"></div>
+                            <div class="single-thumb"><img class="Detai" src="@image.ImageUrl" alt="" width="155" height="155"></div>
                         }
 
                         @*<div class="single-thumb"><img src="img/product-details/thumb-2.jpg" alt=""></div>
@@ -44,7 +44,7 @@
                         {
                             <div class="single-image">
                                 <a target="_blank" href="@image.ImageUrl">
-                                    <img id="myImg" src="@image.ImageUrl" alt="" width="450" height="505">
+                                    <img class="detailsImg" src="@image.ImageUrl" alt="" >
                                 </a>
                             </div>
                         }
@@ -72,7 +72,7 @@
                     </span>
 
                     <!-- Price -->
-                    <span class="product-price">€ @Model.Price</span>
+                    <span class="product-price"> @Model.Price лв.</span>
 
                     <!-- Description -->
                     <div class="description">
