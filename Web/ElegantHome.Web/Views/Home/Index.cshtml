@@ -28,7 +28,7 @@
             <!-- Hero Slide Item Start-->
             <div class="hero-item" style="background-image: url('/images/Big.jpg')">
 
-                <!-- Hero Content Start-->
+                <!-- Hero Content Start-->  
                 <div class="hero-content text-center m-auto">
 
                     <h2>Save 25%</h2>
@@ -50,7 +50,7 @@
                     <div class="col-lg-6 col-12 mb-30">
 
                         <div class="single-banner">
-                            <img src="/images/cvete.jpg" alt="banner">
+                            <img  src="/images/leftPicture.jpg" alt="banner">
                             <div class="banner-content right">
                                 <h1 class="white"><span>Gifts</span>for you</h1>
                                 <a href="#" class="button">Shop Now</a>
@@ -62,10 +62,10 @@
                     <div class="col-lg-6 col-12 mb-30">
 
                         <div class="single-banner">
-                            <img src="images/drugo.jpg" alt="banner">
+                            <img src="images/rightPicture_adobespark.jpg" class="ceci_resize"  alt="banner">
                             <div class="banner-content left">
-                                <h2 class="black"><span class="small">Save <span class="red">25%</span></span><span class="red">Offer</span> Summer</h2>
-                                <a href="#" class="link">Shop Now</a>
+                                <h2 style="color: azure"><span class="small">Save <span style="color: azure">25%</span></span><span style="color: azure">Offer</span> Summer</h2>
+                                <a href="#" class="button" style="color: #e11515">Shop Now</a>
                             </div>
                         </div>
 
@@ -95,7 +95,7 @@
                                <!-- Image Wrapper -->
                                <div class="image">
                                    <!-- Image -->
-                                   <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id" class="img"><img src="@item.ImageUrl" weight="370" height="440" alt="Product"></a>
+                                   <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id"><img class="allImg_resize" src="@item.ImageUrl"   alt="Product"></a>
                                    <!-- Wishlist -->
 
                                    @*<a asp-controller="User" asp-action="AddToWishlist" asp-route-productId="@item.Id" class="wishlist"><i class="fa fa-heart-o"></i></a>*@
@@ -116,7 +116,7 @@
                                        </div>
                                        <!-- Price -->
                                        <div class="price float-right">
-                                           <span class="new">$@item.Price</span>
+                                           <span class="new">@item.Price лв.</span>
                                            <!-- Old Price Mockup If Need -->
                                            <!-- <span class="old">$46</span> -->
                                        </div>

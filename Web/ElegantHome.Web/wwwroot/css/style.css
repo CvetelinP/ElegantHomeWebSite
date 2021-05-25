@@ -2598,6 +2598,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
             padding-top: 5px;
         }
 
+
+
             .product .content .head .price span {
                 color: #4d4d4d;
                 font-size: 24px;
@@ -4268,7 +4270,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin: 0 30px;
     position: relative;
     z-index: 9;
-    margin-bottom: -190px;
+    margin-bottom: 190px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -4414,7 +4416,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /*-- Contact Map --*/
 #contact-map {
-    height: 620px;
+    height: 610px;
     width: 100%;
 }
 
@@ -4503,13 +4505,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-top: 30px;
 }
 
-/* line 1151, /Applications/MAMP/htdocs/1.monthy projects/29.Shop/scss/theme/_home.scss */
-.total-comment .single-comment .user-details img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin-right: 20px;
-}
+    /* line 1151, /Applications/MAMP/htdocs/1.monthy projects/29.Shop/scss/theme/_home.scss */
+    .total-comment .single-comment .user-details img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
 
 @media (max-width: 575px) {
     /* line 1157, /Applications/MAMP/htdocs/1.monthy projects/29.Shop/scss/theme/_home.scss */
@@ -4530,6 +4532,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-top: 15px;
     margin-bottom: 30px;
 }
+
 .common-textarea {
     display: block;
     width: 100%;
@@ -4550,4 +4553,39 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .common-textarea:focus {
     outline: none;
 }
+
+.allImg_resize {
+    width: 370px;
+    height: 440px;
+    object-fit: contain;
+}
+
+.detailsImg {
+    width: 450px;
+    height: 550px;
+    object-fit: contain;
+}
+
+.Details_smallImg {
+    width: 155px;
+    height: 1500px;
+    object-fit: contain;
+
+}
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 50%;
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+
 

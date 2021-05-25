@@ -17,5 +17,7 @@
 
         SingleProductViewModel ProductProfileInfo(int productId);
 
+        IEnumerable<T> GetByCategoryId<T>(int categoryId);
+
     }
 }
