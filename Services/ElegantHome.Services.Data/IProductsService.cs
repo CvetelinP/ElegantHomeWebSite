@@ -19,5 +19,7 @@
 
         IEnumerable<T> GetByCategoryId<T>(int categoryId);
 
+        Task DeleteAsync(int id);
+
     }
 }

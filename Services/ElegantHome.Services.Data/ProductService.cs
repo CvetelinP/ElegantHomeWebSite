@@ -100,5 +100,14 @@ namespace ElegantHome.Services.Data
 
             return query;
         }
+
+        public async Task DeleteAsync(int id)
+        {
+            var product = this.productRepository.All().FirstOrDefault(x => x.Id == id);
+
+            this.productRepository.Delete(product);
+
+            await this.productRepository.SaveChangesAsync();
+        }
     }
 }

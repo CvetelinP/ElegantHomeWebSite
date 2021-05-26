@@ -1,21 +1,26 @@
-﻿namespace ElegantHome.Web.Areas.Administration.Controllers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using ElegantHome.Data;
+using ElegantHome.Data.Models;
+using ElegantHome.Services.Data;
+
+namespace ElegantHome.Web.Areas.Administration.Controllers
 {
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    using ElegantHome.Data;
-    using ElegantHome.Data.Models;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-
     [Area("Administration")]
-    public class CategoriesController : AdministrationController
+    public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ICategoriesService _categoriesService;
 
-        public CategoriesController(ApplicationDbContext context)
+        public CategoriesController(ApplicationDbContext context, ICategoriesService categoriesService)
         {
             _context = context;
+            _categoriesService = categoriesService;
         }
 
         // GET: Administration/Categories
@@ -52,7 +57,6 @@
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Category category)
         {
             if (ModelState.IsValid)
@@ -84,7 +88,6 @@
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Category category)
         {
             if (id != category.Id)
@@ -134,14 +137,12 @@
         }
 
         // POST: Administration/Categories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            await this._categoriesService.DeleteAsync(id);
+            return this.RedirectToAction(nameof(Index));
         }
 
         private bool CategoryExists(int id)
