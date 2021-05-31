@@ -1,6 +1,4 @@
-﻿using ElegantHome.Web.ViewModels.WishList;
-
-namespace ElegantHome.Services.Data
+﻿namespace ElegantHome.Services.Data
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -16,5 +14,7 @@ namespace ElegantHome.Services.Data
         bool IsAdInWishlistAsync(string userId, int productId);
 
         Task<IEnumerable<SingleProductViewModel>> GetUserWishlistAsync(string userId);
+
+
     }
 }

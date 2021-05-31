@@ -21,5 +21,6 @@
 
         Task DeleteAsync(int id);
 
+        IEnumerable<T> Search<T>(string search);
     }
 }

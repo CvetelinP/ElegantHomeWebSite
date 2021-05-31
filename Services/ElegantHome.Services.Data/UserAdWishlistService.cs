@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using ElegantHome.Web.ViewModels.Product;
-using ElegantHome.Web.ViewModels.WishList;
-
-namespace ElegantHome.Services.Data
+﻿namespace ElegantHome.Services.Data
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     using ElegantHome.Data.Common.Repositories;
     using ElegantHome.Data.Models;
+    using ElegantHome.Web.ViewModels.Product;
+    using ElegantHome.Web.ViewModels.WishList;
     using Microsoft.EntityFrameworkCore;
 
     public class UserAdWishlistService : IUserAdWishlistService
@@ -60,5 +59,7 @@ namespace ElegantHome.Services.Data
 
             return result;
         }
+
+     
     }
 }

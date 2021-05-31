@@ -17,7 +17,8 @@ namespace ElegantHome.Services.Data
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IDeletableEntityRepository<WishList> _wishRepository;
 
-        public ProductService(IDeletableEntityRepository<Product> productRepository, UserManager<ApplicationUser> userManager, IDeletableEntityRepository<WishList> wishRepository)
+        public ProductService(IDeletableEntityRepository<Product> productRepository,
+            UserManager<ApplicationUser> userManager, IDeletableEntityRepository<WishList> wishRepository)
         {
             this.productRepository = productRepository;
             this._userManager = userManager;
@@ -79,24 +80,29 @@ namespace ElegantHome.Services.Data
 
         public SingleProductViewModel ProductProfileInfo(int productId)
         {
-            return this.productRepository.AllAsNoTracking().Where(x => x.Id == productId).Select(x => new SingleProductViewModel()
-            {
-                Name = x.Name,
-                Description = x.Description ?? string.Empty,
-                MoreInfo = x.MoreInfo,
-                Price = x.Price,
-                Id = x.Id,
-                UserId = x.UserId,
-                Images = x.Images.Select(x => new ProductImagesViewModel() { ImageUrl = x.Url, Id = x.Id, CreatedOn = x.CreatedOn }).OrderByDescending(x => x.CreatedOn).ToList(),
-                ImageUrl = x.Images.OrderBy(x => x.CreatedOn).FirstOrDefault().Url,
-                CategoryName = x.Category.Name,
-            }).FirstOrDefault();
+            return this.productRepository.AllAsNoTracking().Where(x => x.Id == productId).Select(x =>
+                new SingleProductViewModel()
+                {
+                    Name = x.Name,
+                    Description = x.Description ?? string.Empty,
+                    MoreInfo = x.MoreInfo,
+                    Price = x.Price,
+                    Id = x.Id,
+                    UserId = x.UserId,
+                    Images = x.Images
+                        .Select(x => new ProductImagesViewModel()
+                        { ImageUrl = x.Url, Id = x.Id, CreatedOn = x.CreatedOn }).OrderByDescending(x => x.CreatedOn)
+                        .ToList(),
+                    ImageUrl = x.Images.OrderBy(x => x.CreatedOn).FirstOrDefault().Url,
+                    CategoryName = x.Category.Name,
+                }).FirstOrDefault();
         }
 
         public IEnumerable<T> GetByCategoryId<T>(int categoryId)
         {
             var query = this.productRepository.All()
-                .Where(x => x.CategoryId == categoryId).To<T>().ToList();
+                .Where(x => x.CategoryId == categoryId)
+                .To<T>().ToList();
 
             return query;
         }
@@ -108,6 +114,13 @@ namespace ElegantHome.Services.Data
             this.productRepository.Delete(product);
 
             await this.productRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<T> Search<T>(string search)
+        {
+            var query = this.productRepository.AllAsNoTracking()
+                .Where(x => x.Name.ToLower().Contains(search.ToLower()));
+            return query.To<T>().ToList();
         }
     }
 }

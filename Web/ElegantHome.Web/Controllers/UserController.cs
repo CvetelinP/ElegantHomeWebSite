@@ -40,8 +40,6 @@ namespace ElegantHome.Web.Controllers
             await this._wishlistService.RemoveFromWishlistAsync(userId, productId);
 
             return this.Redirect($"/Products/Details?productId={productId}");
-
         }
-
     }
 }
