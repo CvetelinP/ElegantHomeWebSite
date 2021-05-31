@@ -11,7 +11,7 @@
 
         IEnumerable<T> GetAll<T>();
 
-
+        Task DeleteAsync(int id);
         IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs();
     }
 }

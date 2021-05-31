@@ -55,7 +55,7 @@
             return this.RedirectToAction("Add");
         }
 
-        public IActionResult All(int id = 1)
+        public IActionResult All(string search =null, int id = 1)
         {
             if (id <= 0)
             {
@@ -70,6 +70,15 @@
                 ProductsCount = this._productService.GetCount(),
                 Products = this._productService.GetAllWithPaging<ProductInListViewModel>(id, ItemsPerPage),
             };
+            var product = this._productService.GetAllWithPaging<ProductInListViewModel>(id, ItemsPerPage);
+            if (!string.IsNullOrEmpty(search))
+            {
+                var products = this._productService.Search<ProductInListViewModel>(search);
+
+                viewModel.Products = products;
+                return this.View(viewModel);
+            }
+
             return this.View(viewModel);
         }
 

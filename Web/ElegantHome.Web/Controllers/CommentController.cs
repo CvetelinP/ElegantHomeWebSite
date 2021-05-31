@@ -39,13 +39,15 @@ namespace ElegantHome.Web.Controllers
                 return this.Redirect($"/Products/Details?productId={input.ProductId}");
             }
 
-            var serviceModel = new CreateServiceModel
-            {
-                Text = input.Text,
-                ProductId = input.ProductId,
-                WrittenOn = DateTime.UtcNow,
-                UserId = this.userManager.GetUserAsync(this.HttpContext.User).GetAwaiter().GetResult().Id,
-            };
+                var serviceModel = new CreateServiceModel
+                {
+                    Text = input.Text,
+                    ProductId = input.ProductId,
+                    WrittenOn = DateTime.UtcNow,
+                    UserId = this.userManager.GetUserAsync(this.HttpContext.User).GetAwaiter().GetResult().Id,
+                };
+
+                
             var comment = await this.commentsService.PostAsync(serviceModel);
             return this.Redirect($"/Products/Details?productId={input.ProductId}");
         }

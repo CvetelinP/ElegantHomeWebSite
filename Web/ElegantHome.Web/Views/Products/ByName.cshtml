@@ -33,13 +33,11 @@
                             <!-- Image Wrapper -->
                             <div class="image">
                                 <!-- Image -->
-                                <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id" class="img"><img src="@item.ImageUrl" width="276" height="276" alt="Product"></a>
+                                <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id"><img class="allImg_resize" src="@item.ImageUrl" alt="Product"></a>
                                 <!-- Wishlist -->
-                                <a href="#" class="wishlist"><i class="fa fa-heart-o"></i></a>
+                                @*<a href="#" class="wishlist"><i class="fa fa-heart-o"></i></a>*@
                                 <!-- Label -->
-                                <span class="label">New</span>
                             </div>
-
                             <!-- Content -->
                             <div class="content">
 
@@ -49,11 +47,11 @@
                                     <!-- Title & Category -->
                                     <div class="title-category float-left">
                                         <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id"><h5>@item.Name</h5></a>
-                                        <a href="shop.html" class="category" style="color: red"><b>@item.CategoryName</b></a>
+                                        <a a asp-controller="Products" asp-action="ByName" asp-route-categoryId="@item.Id" class="category" style="color: red"><b>@item.CategoryName</b></a>
                                     </div>
                                     <!-- Price -->
                                     <div class="price float-right">
-                                        <span class="new">$@item.Price</span>
+                                        <span>@item.Price лв.</span>
                                         <!-- Old Price Mockup If Need -->
                                         <!-- <span class="old">$46</span> -->
                                     </div>

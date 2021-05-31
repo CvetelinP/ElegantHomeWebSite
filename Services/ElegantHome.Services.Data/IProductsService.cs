@@ -19,5 +19,8 @@
 
         IEnumerable<T> GetByCategoryId<T>(int categoryId);
 
+        Task DeleteAsync(int id);
+
+        IEnumerable<T> Search<T>(string search);
     }
 }

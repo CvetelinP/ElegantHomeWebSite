@@ -1,5 +1,4 @@
 ﻿@model ElegantHome.Web.ViewModels.Product.ProductListViewModelWithPaging
-
 <!-- Main Wrapper Start -->
 <div id="main-wrapper" class="section">
 
@@ -24,51 +23,51 @@
             <div class="row">
 
                 @foreach (var item in Model.Products)
-                    {
+                {
 
-                <div class="col-lg-4 col-md-6 col-12 mb-60">
+                    <div class="col-lg-4 col-md-6 col-12 mb-60">
 
-                    <div class="product">
+                        <div class="product">
 
-                        <!-- Image Wrapper -->
-                        <div class="image">
-                            <!-- Image -->
-                            <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id"><img class="allImg_resize" src="@item.ImageUrl"   alt="Product"></a>
-                            <!-- Wishlist -->
-                            @*<a href="#" class="wishlist"><i class="fa fa-heart-o"></i></a>*@
-                            <!-- Label -->
-                        </div>
-                        <!-- Content -->
-                        <div class="content">
-
-                            <!-- Head Content -->
-                            <div class="head fix">
-
-                                <!-- Title & Category -->
-                                <div class="title-category float-left">
-                                   <a  asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id"><h5>@item.Name</h5></a>
-                                    <a href="shop.html" class="category" style="color: red"><b>@item.CategoryName</b></a>
-                                </div>
-                                <!-- Price -->
-                                <div class="price float-right">
-                                    <span>@item.Price лв.</span>
-                                    <!-- Old Price Mockup If Need -->
-                                    <!-- <span class="old">$46</span> -->
-                                </div>
-
+                            <!-- Image Wrapper -->
+                            <div class="image">
+                                <!-- Image -->
+                                <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id"><img class="allImg_resize" src="@item.ImageUrl" alt="Product"></a>
+                                <!-- Wishlist -->
+                                @*<a href="#" class="wishlist"><i class="fa fa-heart-o"></i></a>*@
+                                <!-- Label -->
                             </div>
+                            <!-- Content -->
+                            <div class="content">
 
-                            <!-- Action Button -->
-                            <div class="action-button fix">
-                                <a href="#">add to cart</a>
+                                <!-- Head Content -->
+                                <div class="head fix">
+
+                                    <!-- Title & Category -->
+                                    <div class="title-category float-left">
+                                        <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id"><h5>@item.Name</h5></a>
+                                        <a a asp-controller="Products" asp-action="ByName" asp-route-categoryId="@item.Id" class="category" style="color: red"><b>@item.CategoryName</b></a>
+                                    </div>
+                                    <!-- Price -->
+                                    <div class="price float-right">
+                                        <span>@item.Price лв.</span>
+                                        <!-- Old Price Mockup If Need -->
+                                        <!-- <span class="old">$46</span> -->
+                                    </div>
+
+                                </div>
+
+                                <!-- Action Button -->
+                                <div class="action-button fix">
+                                    <a href="#">add to cart</a>
+                                </div>
+
                             </div>
 
                         </div>
 
                     </div>
-
-                </div>
-                    }
+                }
 
                 <partial name="_PagingParcal" model="@Model" />
 

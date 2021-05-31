@@ -37,6 +37,13 @@
             return category;
         }
 
+        public async Task DeleteAsync(int id)
+        {
+            var category = this.categoryRepository.All().FirstOrDefault(x => x.Id == id);
+            this.categoryRepository.Delete(category);
+
+            await this.categoryRepository.SaveChangesAsync();
+        }
 
         public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs()
         {

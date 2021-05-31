@@ -38,5 +38,13 @@
 
             return this.View(viewModel);
         }
+
+        public async Task<IActionResult> Delete(int productId, string userId)
+        {
+
+            await this._wishlistService.RemoveFromWishlistAsync(userId, productId);
+
+            return Redirect("Home/Index");
+        }
     }
 }

@@ -4,28 +4,37 @@
     var categoriesItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 <div asp-validation-summary="All" class="text-danger"></div>
-<div id="main-wrapper" class="section">
+<div id="main-wrapper" class="section text-capitalize text-success">
 
     <h3>Създай продукт</h3>
+    <br />
     <div asp-validation-summary="All" class="text-danger"></div>
     <form method="post" enctype="multipart/form-data" class="comment-form row">
-        <div class="col-md-6 col-sm-12 mb-30">
-            <input placeholder="Name" asp-for="Name" type="text" />
-            <input placeholder="Price" asp-for="Price" type="text">
-            <input placeholder="Quantity" asp-for="Quantity" type="text">
+        <div class="col-md-6 col-sm-12 mb-40">
+            <label asp-for="Name">Име на продукта</label>
+            <input asp-for="Name" type="text" />
+
+            <label asp-for="Price">Цена</label>
+            <input asp-for="Price" type="text" />
+
+            <label asp-for="Quantity"> Количество</label>
+            <input asp-for="Quantity" type="text" />
+
             <select asp-for="CategoryId" asp-items="categoriesItems">
                 <option value="">Добави категория</option>
             </select>
+
+            <label asp-for="Description">Описание на продукта</label>
             <textarea asp-for="Description" placeholder="напиши описание на продукта"></textarea>
+
+            <label asp-for="MoreInfo">Подробно описание на продукта</label>
             <textarea asp-for="MoreInfo" placeholder="напиши допълнително описание на продукта"></textarea>
+
             <div class="form-group" enctype="multipart/form-data">
                 <label asp-for="Images"></label>
                 <input asp-for="Images" class="form-control" />
                 <span asp-validation-for="Images" class="text-danger"></span>
             </div>
-
-
-
         </div>
         <div class="col-12"><input value="Submit" type="submit"></div>
     </form>
@@ -33,5 +42,7 @@
 
     <a asp-controller="Categories" asp-action="All">
         <div class="comment-form row"><input value="Всички категории" type="submit"></div>
+        <br />
     </a>
+  
 </div>

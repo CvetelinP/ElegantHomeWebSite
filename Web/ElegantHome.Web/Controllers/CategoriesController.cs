@@ -16,7 +16,7 @@ namespace ElegantHome.Web.Controllers
         public CategoriesController(ICategoriesService categoriesService,IProductsService productsService)
         {
             this.categoriesService = categoriesService;
-            _productsService = productsService;
+            this._productsService = productsService;
         }
 
         public IActionResult Add()

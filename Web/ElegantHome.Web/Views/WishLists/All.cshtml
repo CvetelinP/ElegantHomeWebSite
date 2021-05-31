@@ -38,25 +38,32 @@
 
                             <!-- Table Body -->
                             <tbody>
-                            @foreach (var item in Model.WishLists)
-                            {
-                                <tr>
-                                    <td><span class="cart-number">@item.Id</span></td>
+                                @foreach (var item in Model.WishLists)
+                                {
+                                    <tr>
+                                        <td><span class="cart-number">@item.Id</span></td>
 
 
-                                    <td><a href="#" class="cart-pro-image"><img src="img/product/1.jpg" alt=""/></a></td>
-                                    <td><a href="#" class="cart-pro-title">@item.Name</a></td>
-                                    <td>
-                                        <p class="stock in-stock">in stock</p>
-                                    </td>
-                                    <td>
-                                        <p class="cart-pro-price">@item.Price</p>
-                                    </td>
-                                    <td><button class="wl-add-cart-btn">add to cart</button></td>
-                                    <td><button class="cart-pro-remove"><i class="fa fa-trash-o"></i></button></td>
-  
-                                </tr>
-                            }
+                                        <td><a href="#" class="cart-pro-image"><img src="img/product/1.jpg" alt="" /></a></td>
+                                        <td><a href="#" class="cart-pro-title">@item.Name</a></td>
+                                        <td>
+                                            <p class="stock in-stock">in stock</p>
+                                        </td>
+                                        <td>
+                                            <p class="cart-pro-price">@item.Price</p>
+                                        </td>
+                                        <td><button class="wl-add-cart-btn">add to cart</button></td>
+                                        <td>
+                                            <a asp-controller="User" asp-action="RemoveFromWishlist" asp-route-productId="@item.Id">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fas fa-trash fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete Product:')"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
