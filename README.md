@@ -1,3 +1,4 @@
+![Untitled](https://user-images.githubusercontent.com/60228109/122689007-7649b980-d228-11eb-88df-ef64e55607bc.png)
 # ElegantHomeWeb
 Technologies Used
 This website is designed and runs using the main technologies below:
