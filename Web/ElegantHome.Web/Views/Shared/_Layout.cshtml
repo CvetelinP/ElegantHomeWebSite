@@ -1,6 +1,7 @@
 ﻿@using ElegantHome.Common
 @using ElegantHome.Data.Models
 @using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -72,12 +73,10 @@
                                                                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
                                                                     <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
                                                                 </form>
-                                                            </li>
- }
-                                                        else
-                                                        {
-                                            <partial name="_LoginPartial" />
-}
+                                                            </li> }
+                                                                        else
+                                                                        {
+                                                            <partial name="_LoginPartial" />}
                                         <li>
 
                                             <!-- Mini Cart -->
@@ -156,21 +155,31 @@
                     <li>
                         <a href="#">Администратор</a>
                         <ul class="sub-menu">
+                            <input value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" style="display: none" id="userId" />
                             <li><a asp-controller="Categories" asp-action="Add">Създай Категория</a></li>
                             <li><a asp-controller="Products" asp-action="Add">Създай Продукт</a></li>
                             <li><a asp-area="Administration" asp-controller="Categories" asp-action="Index">Категории за редакция</a></li>
                             <li><a asp-area="Administration" asp-controller="Products" asp-action="Index">Продукти за редакция</a></li>
+                            <li>
+                                <a asp-controller="Conversation" asp-action="GetAllCount">
+                                    Всички съобщения
+                                    <span class="badge badge-light ml-1" id="conversationsCount" style="font-size: 1.2rem;">0</span>
+                                    <script src="~/js/conversations.js"></script>
+                                </a>
+                            </li>
+
                         </ul>
-                    </li>}
+                    </li>
+}
 
                                 <li>
-                                    <a  asp-controller="Blog" asp-action="Index">Блог</a>
+                                    <a asp-controller="Blog" asp-action="Index">Блог</a>
                                     <ul class="sub-menu">
                                         <li><a asp-controller="Blog" asp-action="Index">Блог страница</a></li>
                                         <li><a asp-controller="Blog" asp-action="Index">Блог</a></li>
                                     </ul>
                                 </li>
-                                <li><a  asp-controller="Contact" asp-action="IndexContact">Контакти</a></li>
+                                <li><a asp-controller="Contact" asp-action="IndexContact">Контакти</a></li>
                             </ul>
                         </nav>
 
@@ -182,7 +191,7 @@
 
                             <!-- Search Form -->
                             <div class="header-search-form">
-                                <form  asp-controller="Products" asp-action="All" method="Post">
+                                <form asp-controller="Products" asp-action="All" method="Post">
                                     <input type="text" name="Search" placeholder="Търси...">
                                     <button><i class="ion-ios-search-strong"></i></button>
                                 </form>
@@ -290,10 +299,10 @@
     <script src="~/js/plugins.js"></script>
     <!-- Ajax Mail JS -->
     <script src="~/js/ajax-mail.js"></script>
-<script src="~/js/comments.js"></script>
-<script src="~/js/map.js"></script>
+    <script src="~/js/comments.js"></script>
+    <script src="~/js/map.js"></script>
     <!-- Main JS -->
-<script src="~/js/main.js"></script>
+    <script src="~/js/main.js"></script>
 
 
 

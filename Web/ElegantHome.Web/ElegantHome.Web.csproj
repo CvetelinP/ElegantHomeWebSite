@@ -64,10 +64,4 @@
     <ProjectReference Include="..\ElegantHome.Web.Infrastructure\ElegantHome.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\ElegantHome.Web.ViewModels\ElegantHome.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\images\weddinggift_adobespark.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 </Project>

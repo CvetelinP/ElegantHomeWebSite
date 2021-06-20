@@ -4587,5 +4587,15 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     position: absolute;
 }
 
+.text-white {
+    color: red !important;
+    font-weight: bold;
+    border: #000000;
+}
+
+
+
+
+
 
 

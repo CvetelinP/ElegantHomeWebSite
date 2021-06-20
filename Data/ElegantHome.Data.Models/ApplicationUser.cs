@@ -19,6 +19,7 @@ namespace ElegantHome.Data.Models
             this.WishLists = new List<WishList>();
             this.Products = new HashSet<Product>();
             this.Comments = new HashSet<Comment>();
+            this.Messages = new HashSet<Message>();
         }
 
         // Audit info
@@ -42,5 +43,7 @@ namespace ElegantHome.Data.Models
         public virtual ICollection<Product> Products { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }
