@@ -1,5 +1,6 @@
 ﻿@using ElegantHome.Data.Models
 @using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
 @model ElegantHome.Web.ViewModels.Product.SingleProductViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 <!-- Main Wrapper Start -->
@@ -92,7 +93,9 @@
 
                     <!-- Quantity & Cart Button -->
                     <div class="product-quantity-cart fix">
-                        <button class="add-to-cart">Massage seller</button>
+                             <a asp-controller="Conversation" asp-action="Create" asp-route-buyerId="@User.FindFirstValue(ClaimTypes.NameIdentifier)" asp-route-sellerId="@Model.UserId" asp-route-productId="@Model.Id">
+                             <button class="add-to-cart">Massage seller</button>
+                             </a>
                         <button class="add-to-cart">add to cart</button>
                     </div>
 

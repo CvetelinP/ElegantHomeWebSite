@@ -1,4 +1,8 @@
-﻿namespace ElegantHome.Web
+﻿
+
+using ElegantHome.Web.Hubs;
+
+namespace ElegantHome.Web
 {
     using System.Reflection;
 
@@ -43,27 +47,23 @@
 
             services.Configure<CookiePolicyOptions>(
                 options =>
-                    {
-                        options.CheckConsentNeeded = context => true;
-                        options.MinimumSameSitePolicy = SameSiteMode.None;
-                    });
+                {
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                });
 
             services.AddControllersWithViews(
-                options =>
-                {
-                    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                }).AddRazorRuntimeCompilation();
+                    options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
+                .AddRazorRuntimeCompilation();
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddAntiforgery(options =>
-            {
-                options.HeaderName = "X-CSRF-TOKEN";
-            });
+            services.AddAntiforgery(options => { options.HeaderName = "X-CSRF-TOKEN"; });
             services.AddSingleton(this.configuration);
+            services.AddSignalR();
 
             Account account = new Account(
                 this.configuration["Cloudinary:AppName"],
@@ -88,6 +88,8 @@
             services.AddTransient<IProductsService, ProductService>();
             services.AddTransient<IUserAdWishlistService, UserAdWishlistService>();
             services.AddTransient<ICommentsService, CommentsService>();
+            services.AddTransient<IConversationService, ConversationService>();
+            services.AddTransient<IMessageService, MessageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -122,15 +124,14 @@
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
-
             app.UseEndpoints(
                 endpoints =>
-                    {
-                        endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                        endpoints.MapRazorPages();
-                    });
+                {
+                    endpoints.MapHub<MessageHub>("/message");
+                    endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapRazorPages();
+                });
         }
     }
 }

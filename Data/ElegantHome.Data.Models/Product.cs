@@ -11,6 +11,7 @@
             this.Images = new HashSet<Image>();
             this.WishList = new HashSet<WishList>();
             this.Comments = new List<Comment>();
+            this.Conversations = new HashSet<Conversation>();
         }
 
         public string Name { get; set; }
@@ -38,5 +39,8 @@
         public virtual ICollection<WishList> WishList { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<Conversation> Conversations { get; set; }
+
     }
 }
