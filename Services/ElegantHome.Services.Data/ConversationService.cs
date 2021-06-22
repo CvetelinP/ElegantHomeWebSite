@@ -97,5 +97,25 @@
 
             return conversations.Count;
         }
+
+        public async Task<IEnumerable<ConversationServiceModel>> GetAllByUserIdAsync(string userId)
+        {
+            return await this.conversationRepository.AllAsNoTracking().Where(c =>
+                    (c.BuyerId == userId || c.SellerId == userId))
+                .OrderByDescending(c => c.StartedOn)
+                .Select(c => new ConversationServiceModel
+                {
+                    Id = c.Id,
+                    BuyerId = c.BuyerId,
+                    SellerId = c.SellerId,
+                    ProductId = c.ProductId,
+                    IsReadByBuyer = c.IsReadByBuyer,
+                    IsReadBySeller = c.IsReadBySeller,
+                    IsArchivedByBuyer = c.IsArchivedByBuyer,
+                    IsArchivedBySeller = c.IsArchivedBySeller,
+                    StartedOn = c.StartedOn,
+                })
+                .ToListAsync();
+        }
     }
 }
