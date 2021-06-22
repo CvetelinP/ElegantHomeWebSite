@@ -117,5 +117,33 @@
                 })
                 .ToListAsync();
         }
+
+        public async Task<bool> MarkConversationAsReadAsync(string conversationId, string userId)
+        {
+            if (!await this.conversationRepository.All().AnyAsync(c => c.Id == conversationId))
+            {
+                return false;
+            }
+
+            var conversation = await this.conversationRepository.All().SingleOrDefaultAsync(c => c.Id == conversationId);
+
+            if (conversation.BuyerId == userId)
+            {
+                conversation.IsReadByBuyer = true;
+            }
+            else if (conversation.SellerId == userId)
+            {
+                conversation.IsReadBySeller = true;
+            }
+            else
+            {
+                return false;
+            }
+
+            this.conversationRepository.Update(conversation);
+            await this.conversationRepository.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

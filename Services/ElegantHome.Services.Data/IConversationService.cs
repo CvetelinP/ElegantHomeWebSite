@@ -18,5 +18,7 @@
         Task<int> GetAllUnReadByUserIdCountAsync(string userId);
 
         Task<IEnumerable<ConversationServiceModel>> GetAllByUserIdAsync(string userId);
+
+        Task<bool> MarkConversationAsReadAsync(string conversationId, string userId);
     }
 }
