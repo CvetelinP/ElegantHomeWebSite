@@ -1,17 +1,17 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
-using ElegantHome.Common;
-using ElegantHome.Data.Models;
-using ElegantHome.Services.Data;
-using ElegantHome.Web.BindingModels.Message;
-using ElegantHome.Web.Hubs;
-using ElegantHome.Web.ViewModels.Message;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.SignalR;
-
-namespace ElegantHome.Web.Controllers
+﻿namespace ElegantHome.Web.Controllers
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using ElegantHome.Common;
+    using ElegantHome.Data.Models;
+    using ElegantHome.Services.Data;
+    using ElegantHome.Web.BindingModels.Message;
+    using ElegantHome.Web.Hubs;
+    using ElegantHome.Web.ViewModels.Message;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.SignalR;
 
     public class MessageController : Controller
     {
@@ -24,7 +24,8 @@ namespace ElegantHome.Web.Controllers
         public MessageController(IConversationService conversationService,
             IProductsService productService,
             IMessageService messageService,
-            UserManager<ApplicationUser>userManager,IHubContext<MessageHub> hubContext)
+            UserManager<ApplicationUser>userManager,
+            IHubContext<MessageHub> hubContext)
         {
             this.conversationService = conversationService;
             this.productService = productService;
@@ -37,7 +38,7 @@ namespace ElegantHome.Web.Controllers
         {
             var conversation = await this.conversationService.GetByIdAsync(conversationId);
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
+            await this.conversationService.MarkConversationAsReadAsync(conversation.Id, userId);
             var product = this.productService.ProductProfileInfo(conversation.ProductId);
 
             var messages = await this.messageService.GetAllInConversationAsync(conversationId);

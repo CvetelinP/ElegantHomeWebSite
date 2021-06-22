@@ -42,7 +42,10 @@
                                 <a asp-controller="Conversation" asp-action="Archive" asp-route-id="@Model[i].Id" class="btn btn-details">Archive</a>
                             </div>
                         </td>
-
+                        @if (!Model[i].IsRead)
+                        {
+                            <td><h3 class="conversation-page-element color-pink">New Messages</h3></td>
+                        }
                     </tr>
 }
             </tbody>
